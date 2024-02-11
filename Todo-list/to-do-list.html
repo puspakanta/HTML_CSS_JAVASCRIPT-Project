@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <style>
+        header{
+            height: 50px;
+            margin-bottom: 40px;
+        }
+
+    </style>
+    <script type="text/javascript">
+        function save() {
+            var title = document.getElementById("title").value;
+            var desc = document.getElementById("desc").value;
+
+            
+            if (title.trim() === '' || desc.trim() === '') {
+                alert('Please enter both title and description.');
+                return;
+            }
+
+            
+            var existingTitles = document.querySelectorAll("tr td:first-child");
+            for (var i = 0; i < existingTitles.length; i++) {
+                if (existingTitles[i].innerText === title) {
+                    alert('Title already exists. Please enter a unique title.');
+                    return;
+                }
+            }
+
+            var tr = document.createElement("tr");
+            var td1 = document.createElement("td");
+            var td2 = document.createElement("td");
+            var td3 = document.createElement("td");
+            var td4=document.createElement("td");
+            td1.innerHTML = title;
+            td2.innerHTML = desc;
+            td3.innerHTML = `<button onclick="deleteRow()" class="btn btn-close btn-danger"></button>`;
+            td4.innerHTML=`<button onclick="editClick()" data-bs-toggle="modal" data-bs-target="#editModal" class="bi bi-pen-fill btn "></button>`
+            tr.appendChild(td1);
+            tr.appendChild(td2);
+            tr.appendChild(td3);
+            tr.appendChild(td4);
+            document.querySelector("tbody").appendChild(tr);
+            tr.addEventListener('click', function() {
+        currentEditingRow = this; // Set the currentEditingRow when a row is clicked
+            });
+        }
+
+        function deleteRow() {
+            var row = event.target.closest('tr');
+            if (row) {
+                row.remove();
+            }
+        }
+
+
+        var currentEditingRow; // Global variable to store the currently edited row
+
+        function editClick(){
+            document.getElementById("editDetails").value=document.querySelector("tr td:nth-child(2)").innerHTML;
+        }
+        function updateClick(){
+            if (currentEditingRow) {
+                var editDetails = document.getElementById("editDetails").value;
+                currentEditingRow.children[1].innerHTML = editDetails; // Update the second cell in the currently edited row
+                $('#editModal').modal('hide'); // Hide the modal
+                currentEditingRow = null; // Reset the currently edited row
+            }
+        }
+    </script>
+</head>
+<body  class="container-fluid bg-danger-subtle">
+    <header>
+        <div class="p-3">
+            To-Do-List Web App
+        </div>
+    </header>
+    <section class="row bg-danger-subtle">
+        <div class="col-4">
+            <div class="card">
+                <div class="card-header">
+                    <input class="form-control" type="text" id="title" placeholder="Title">
+                </div>
+                <div class="card-body">
+                    <textarea class="form-control" id="desc" placeholder="Description" cols="30" rows="10"></textarea>
+                </div>
+                <div class="card-footer">
+                    <button onclick="save()" class="btn btn-success w-100">Save</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-8">
+            <div>
+                <table class="table table-info">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>description</th>
+                            <th>Delete</th>
+                            <th>Edit</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+    <div class="modal" id="editModal">
+        <div class="modal-dialog" >
+            <div class="modal-content">
+                <div class="modal-header">
+                    edit Description
+                </div>
+                <div class="modal-body">
+                    <input type="text" id="editDetails" class="form-control">
+                </div>
+                <div class="modal-footer">
+                    <button onclick="updateClick()" class="btn btn-success">update</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+</body>
+</html>
