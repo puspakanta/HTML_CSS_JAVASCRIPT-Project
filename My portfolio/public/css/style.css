@@ -1,0 +1,184 @@
+.navbar-nav li:hover{
+    border-bottom: 2px solid #e4a11b;
+}
+.navbar-nav a:hover{
+    color: #e4a11b;
+}
+
+.big{
+    font-size: 90px;
+    opacity: 0.1;
+    z-index: 0;
+    font-weight: bold;
+}
+#about-text
+{
+    font-weight: bold;
+    top: 0;
+    left: 11px;
+    font-size: 50px;
+}
+
+
+.details div{
+    margin-bottom: 15px;
+}
+
+/* cards */
+
+.academic-card {
+    
+    margin: 20px auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: none;
+    background-color: grey;
+    color: white;
+}
+
+.academic-card .card-header {
+    color: #fff;
+    text-align: center;
+    font-weight: bold;
+}
+
+.academic-card .card-body {
+    padding: 20px;
+}
+
+.academic-card .card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.academic-card .card-text {
+    line-height: 1.6;
+}
+
+#photo{
+    border: 1px 1px 1px solid white;
+    height: 300px;
+    width: 300px;
+    border-radius: 500px;
+}
+@media screen and (orientation:portrait) {
+    #about-text1
+    {
+        font-weight: bold;
+        top: 0;
+        left: 30%;
+        font-size: 50px;
+    }
+    #about-text2
+    {
+        font-weight: bold;
+        top: 0;
+        left: 28%;
+        font-size: 50px;
+    }
+    #about-text3
+    {
+        font-weight: bold;
+        top: 0;
+        left:18% ;
+        font-size: 50px;
+    }
+    #about-text4
+    {
+        font-weight: bold;
+        top: 0;
+        left:21% ;
+        font-size: 50px;
+    }
+    .academic-card{
+        height: 430px;
+    }
+    .size{
+        font-size: 3em;
+    }
+    .icon{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    #about{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    #about-details{
+        display: flex;
+        justify-content: space-between;
+    }
+   
+}
+@media screen and (orientation:landscape) {
+    #about-text1
+    {
+        font-weight: bold;
+        top: 0;
+        left: 43%;
+        font-size: 50px;
+    }
+    #about-text2
+    {
+        font-weight: bold;
+        top: 0;
+        left: 41%;
+        font-size: 50px;
+    }
+    #about-text3
+    {
+        font-weight: bold;
+        top: 0;
+        left:37% ;
+        font-size: 50px;
+    }
+    #about-text4
+    {
+        font-weight: bold;
+        top: 0;
+        left:39% ;
+        font-size: 50px;
+    }
+    .academic-card{
+        height: 220px;
+    }
+    .size{
+        font-size: 5em;
+    }
+    .icon{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    
+}
+
+.project-img {
+    height: 300px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(228,161,27,0.8);
+    padding: 20px;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.project-img:hover .text {
+    opacity: 1;
+}
+
